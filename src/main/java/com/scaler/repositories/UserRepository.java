@@ -1,4 +1,4 @@
-package com.scaler.respositories;
+package com.scaler.repositories;
 
 import com.scaler.models.User;
 
