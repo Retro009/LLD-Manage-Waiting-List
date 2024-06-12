@@ -65,4 +65,4 @@ We need to implement a functionality using which restaurant admin can remove cus
 * Refer the DTOs `UpdateWaitListRequestDto` and `UpdateWaitListResponseDto` for request and response details.
 * Implement the relevant methods of `WaitListService`, `UserRepository` and `WaitListRepository` classes to achieve the above requirements.
 * Refer the models package to understand the models to be used.
-* Take a look at the test cases in WaitListControllerTest class to understand the requirements better.
+* Implement in memory database for this assignment.
