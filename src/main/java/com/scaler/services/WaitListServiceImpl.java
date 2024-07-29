@@ -32,7 +32,7 @@ public class WaitListServiceImpl implements WaitListService{
             position.setInsertedAt(new Date());
             waitListPositionRepository.save(position);
 
-            return getWaitListPosition(userId);
+            return waitListPositionRepository.findAll().size();
         }
 
         return waitListPosition;
@@ -55,13 +55,9 @@ public class WaitListServiceImpl implements WaitListService{
         if(adminUser.getUserType().equals(UserType.USER))
             throw new UnauthorizedAccessException("ACCESS DENIED");
         List<WaitListPosition> waitingList = waitListPositionRepository.findAll();
-        if(waitingList.size()<=numberOfSpots)
-            waitingList.clear();
-        else{
-            for(int i=0;i<numberOfSpots;i++){
-                waitListPositionRepository.delete(waitingList.get(i));
-            }
+        numberOfSpots = Math.min(numberOfSpots,waitingList.size());
+        for(int i=0;i<numberOfSpots;i++){
+            waitListPositionRepository.delete(waitingList.get(i));
         }
-
     }
 }
